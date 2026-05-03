@@ -1,0 +1,28 @@
+# This `.pre-commit-config.yaml` configuration file defines a set of hooks to be used with pre-commit for ensuring 
+# code quality and compliance before commits are made to a repositorHere's a breakdown of its contents:
+
+# Specifies the use of pre-defined hooks from the pre-commit-hooks repository at version 4.5.0, including:
+#    - `trailing-whitespace`: Removes trailing whitespace, with a special argument to handle markdown line breaks.
+#    - `end-of-file-fixer`: Ensures that files end in a newline and only a newline.
+#    - `check-merge-conflict`: Checks for files that contain merge conflict strings.
+#    - `detect-private-key`: Detects the presence of private keys.
+#    - `detect-aws-credentials`: Detects AWS credentials files, with an option to allow missing credentials.
+
+# Incorporates hooks from the pre-commit-terraform repository at version 1.86.0, aimed at enforcing best practices and formatting for Terraform files, including:
+#    - `terraform_fmt`: Formats Terraform files according to the canonical format.
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        args: ["--markdown-linebreak-ext=md"]
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: detect-aws-credentials
+        args: ["--allow-missing-credentials"]
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.92.1
+    hooks:
+      - id: terraform_fmt

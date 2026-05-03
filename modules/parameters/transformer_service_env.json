@@ -1,0 +1,40 @@
+[
+    {
+        "name": "NODE_ENV",
+        "value": "${nodeenv}"
+    },
+    {
+        "name": "DOCUMENT_DB_URI",
+        "value": "${documentdburi}"
+    },
+    {
+        "name": "DATABASE_NAME",
+        "value": "${databasename}"
+    },
+    {
+        "name": "S3_BUCKET_NAME",
+        "value": "${s3_bucket_name}"
+    },
+    {
+        "name": "DEFAULT_ORGANIZATION_ID",
+        "value": "${default_organization_id}"
+    },
+    {
+        "name": "DYNAMO_DB_PRIMARY_TABLE",
+        "value": "${dynamo_db_primary_table}"
+    },
+    {
+        
+        "name": "RECOMMENDATION_ENGINE_ENDPOINT_URL",
+        "value": "${recommendation_engine_endpoint_url}"
+    },
+    {
+        "name": "AI_ENGINE_ENDPOINT_URL",
+        "value": "${ai_engine_endpoint_url}"
+    },
+    {
+        "name": "MARLOWE_RUNTIME_ERRORS_SNS_ARN",
+        "value": "${marlowe_runtime_errors_sns_arn}"
+    }
+
+]

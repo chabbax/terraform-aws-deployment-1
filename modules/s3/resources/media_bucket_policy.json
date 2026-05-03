@@ -1,0 +1,28 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "${media_bucket_role_arn}"
+      },
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": "${aws_s3_bucket_media_arn}/*"
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "${media_bucket_role_arn}"
+      },
+      "Action": [
+        "s3:PutObjectTagging",
+        "s3:GetObjectTagging"
+      ],
+      "Resource": "${aws_s3_bucket_media_arn}/*"
+    }
+  ]
+}

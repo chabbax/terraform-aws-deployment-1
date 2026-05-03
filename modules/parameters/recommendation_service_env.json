@@ -1,0 +1,44 @@
+[
+  {
+    "name": "NODE_ENV",
+    "value": "production"
+  },
+  {
+    "name": "DOCUMENT_DB_URI",
+    "value": "${document_db_uri}"
+  },
+  {
+    "name": "DATABASE_NAME",
+    "value": "${database_name}"
+  },
+  {
+    "name": "DEBUG",
+    "value": "${debug}"
+  },
+  {
+    "name": "REDIS_DB_URI",
+    "value": "${redis_db_uri}"
+  },
+  {
+    "name": "TOPIC_MODEL_NAMES_ORDER",
+    "value": "${topic_model_names_order}"
+  },
+  {
+    "name": "NARRATIVES_MODEL_NAMES_ORDER",
+    "value": "${narratives_model_names_order}"
+  },
+  {
+    "name": "COORDINATES_ARRAY_LENGTH",
+    "value": "${coordinates_array_length}"
+  },
+  {
+    "name": "DEFAULT_ORGANIZATION_ID",
+    "value": "${default_organization_id}"
+  },
+  {
+    "name": "DYNAMO_DB_PRIMARY_TABLE",
+    "value": "${dynamo_db_primary_table}"
+  }
+  
+
+]

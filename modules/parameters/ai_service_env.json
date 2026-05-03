@@ -1,0 +1,79 @@
+[
+  {
+    "name": "DEBUG",
+    "value": "1"
+  },
+  {
+    "name": "DEFAULT_LOCALE",
+    "value": "en_US"
+  },
+  {
+    "name": "LOG_LEVEL",
+    "value": "INFO"
+  },
+  {
+    "name": "NODE_ENV",
+    "value": "production"
+  },
+  {
+    "name": "DOCUMENT_DB_URI",
+    "value": "${document_db_uri}"
+  },
+  {
+    "name": "DATABASE_NAME",
+    "value": "${database_name}"
+  },
+  {
+    "name": "ANTHROPIC_API_KEY",
+    "value": "${anthropic_api_key}"
+  },
+  {
+    "name": "OPENAI_API_KEY",
+    "value": "${openai_api_key}"
+  },
+  {
+    "name": "LANGFUSE_PUBLIC_KEY",
+    "value": "${langfuse_public_key}"
+  },
+  {
+    "name": "LANGFUSE_SECRET_KEY",
+    "value": "${langfuse_secret_key}"
+  },
+  {
+    "name": "DEFAULT_ORGANIZATION_ID",
+    "value": "${default_organization_id}"
+  },
+  {
+    "name": "S3_BUCKET_NAME",
+    "value": "${s3_bucket_name}"
+  },
+  {
+    "name": "PRIMARY_LLM_PROVIDER_MODEL",
+    "value": "${primary_llm_provider_model}"
+  },
+  {
+    "name": "PRIMARY_LLM_PROVIDER",
+    "value": "${primary_llm_provider}"
+  },
+  {
+    "name": "SECONDARY_LLM_PROVIDER",
+    "value": "${secondary_llm_provider}"
+  },
+  {
+    "name": "SECONDARY_LLM_PROVIDER_MODEL",
+    "value": "${secondary_llm_provider_model}"
+  },
+  {
+    "name": "TERTIARY_LLM_PROVIDER",
+    "value": "${tertiary_llm_provider}"
+  },
+  {
+    "name": "TERTIARY_LLM_PROVIDER_MODEL",
+    "value": "${tertiary_llm_provider_model}"
+  },
+  {
+    "name": "SQS_QUEUE_URL",
+    "value": "${sqs_queue_url}"
+  }
+
+]

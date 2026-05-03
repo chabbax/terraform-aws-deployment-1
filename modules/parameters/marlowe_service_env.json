@@ -1,0 +1,50 @@
+[
+  {
+    "name": "MARLOWE_ASSETS",
+    "value": "${marlowe_assets}"
+  },
+  {
+    "name": "EXEC_BIN",
+    "value": "${exec_bin}"
+  },
+  {
+    "name": "EXEC_PARAMS",
+    "value": "${exec_params}"
+  },
+  {
+    "name": "AWS_ACCESS_KEY_ID",
+    "value": "${aws_access_key_id}"
+  },
+  {
+    "name": "AWS_DEFAULT_REGION",
+    "value": "${aws_default_region}"
+  },
+  {
+    "name": "AWS_SECRET_ACCESS_KEY",
+    "value": "${aws_secret_access_key}"
+  },
+  {
+    "name": "MALLET_PATH",
+    "value": "${mallet_path}"
+  },
+  {
+    "name": "MODEL_DIR",
+    "value": "${model_dir}"
+  },
+  {
+    "name": "SPACY_MODEL_NAME",
+    "value": "${spacy_model_name}"
+  },
+  {
+    "name": "RETICULATE_PYTHON",
+    "value": "${reticulate_python}"
+  },
+  {
+    "name": "RSTUDIO_PANDOC",
+    "value": "${rstudio_pandoc}"
+  },
+  {
+    "name": "MAX_CONCURRENCY",
+    "value": "${max_concurrency}"
+  }
+]

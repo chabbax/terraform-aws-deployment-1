@@ -1,0 +1,140 @@
+# SUMMARY OF PIPELINE
+#
+# This Bitbucket pipeline is designed for Terraform infrastructure provisioning. It includes two main steps:
+#
+# 1. Validation and Security Scan: Performs Terraform formatting, initialization, validation, planning, and
+#    a security scan using git-secrets.
+# 2. Provisioning: Applies the Terraform configuration to Terraform Apply.
+#
+# The pipeline triggers on pull requests and the main branch. On pull requests, only validation and security
+# scans are executed. On the main branch, it performs validation followed by provisioning and deployment to
+# the Production environment.
+#
+# Variables:
+#     Repository:
+#         - TF_TOKEN_app_terraform_io: Terraform cloud token
+#     Deployments:
+#         - WORKSPACE: Terraform workspace name
+#         - AWS_ACCESS_KEY_ID: Access key ID
+#         - AWS_SECRET_ACCESS_KEY: Access key secret
+#
+# Note: The repository clones only upto the last 2 commits to speed up the process for all pipeline steps.
+
+image: hashicorp/terraform:1.12.2
+
+definitions:
+  caches:
+    terraform: .terraform
+
+  steps:
+    - step: &terraform-plan-dev
+        name: "Terraform Plan"
+        caches:
+          - terraform
+        script:
+          - export TF_WORKSPACE=dev
+          - cd "environments/dev"
+          - terraform fmt -check
+          - terraform init -input=false
+          - terraform validate
+          - terraform plan -input=false -out="tfplan"
+          - pipe: atlassian/git-secrets-scan:3.2.0
+        artifacts:
+          - environments/dev/tfplan
+
+  steps:
+    - step: &terraform-plan-stg
+        name: "Terraform Plan"
+        caches:
+          - terraform
+        script:
+          - export TF_WORKSPACE=stg
+          - cd "environments/stg"
+          - terraform fmt -check
+          - terraform init -input=false
+          - terraform validate
+          - terraform plan -input=false -out="tfplan"
+          - pipe: atlassian/git-secrets-scan:3.2.0
+        artifacts:
+          - environments/stg/tfplan
+
+  steps:
+    - step: &terraform-plan-prod
+        name: "Terraform Plan"
+        caches:
+          - terraform
+        script:
+          - export TF_WORKSPACE=prod
+          - cd "environments/prod"
+          - terraform fmt -check
+          - terraform init -input=false
+          - terraform validate
+          - terraform plan -input=false -out="tfplan"
+          - pipe: atlassian/git-secrets-scan:3.2.0
+        artifacts:
+          - environments/prod/tfplan
+
+    - step: &terraform-apply-dev
+        name: "Terraform Apply"
+        caches:
+          - terraform
+        script:
+          - cd "environments/dev"
+          - terraform init -input=false
+          - terraform apply -input=false "tfplan"
+
+    - step: &terraform-apply-stg
+        name: "Terraform Apply"
+        caches:
+          - terraform
+        script:
+          - cd "environments/stg"
+          - terraform init -input=false
+          - terraform apply -input=false "tfplan"
+
+    - step: &terraform-apply-prod
+        name: "Terraform Apply"
+        caches:
+          - terraform
+        script:
+          - cd "environments/prod"
+          - terraform init -input=false
+          - terraform apply -input=false "tfplan"
+
+pipelines:
+  pull-requests:
+    "**":
+      - step:
+          <<: *terraform-plan-dev
+
+  branches:
+    main:
+      - step: *terraform-plan-dev
+      - step:
+          <<: *terraform-apply-dev
+          name: "Terraform Apply [DEV]"
+          deployment: Development
+
+      - step:
+          name: "Manual Verification"
+          trigger: manual
+          script:
+            - echo "Please verify the plan before proceeding to apply."
+
+      - step: *terraform-plan-stg
+      - step:
+          <<: *terraform-apply-stg
+          name: "Terraform Apply [STAGING]"
+          deployment: Staging
+
+      - step:
+          name: "Manual Verification"
+          trigger: manual
+          script:
+            - echo "Please verify the plan before proceeding to apply."
+
+      - step: *terraform-plan-prod
+      - step:
+          <<: *terraform-apply-prod
+          name: "Terraform Apply [PROD]"
+          deployment: Production

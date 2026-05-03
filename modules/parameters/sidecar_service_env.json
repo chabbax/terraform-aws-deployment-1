@@ -1,0 +1,30 @@
+[
+    {
+        "name": "APPSETTINGS__SQSQUEUEURL",
+        "value": "${appsettings_sqsqueueurl}"
+    },
+    {
+        "name": "APPSETTINGS__TABLENAME",
+        "value": "${appsettings_tablename}"
+    },
+    {
+        "name": "APPSETTINGS__DEFAULTORGANIZATIONID",
+        "value": "${appsettings_defaultorganizationid}"
+    },
+    {
+        "name": "APPSETTINGS__S3BUCKET",
+        "value": "${appsettings_s3bucket}"
+    },
+    {
+        "name": "APPSETTINGS__MARLOWREPORTINGHOST",
+        "value": "${appsettings_marlowreportinghost}"
+    },
+    {
+        "name": "APPSETTINGS__MARLOWPROXYURL",
+        "value": "${appsettings_MarlowProxyUrl }"
+    },
+    {
+        "name": "APPSETTINGS__ENABLEDNSHEALTHCHECK",
+        "value": "${appsettings_enable_dns_health_check}"
+    }
+]
