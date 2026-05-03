@@ -6,10 +6,6 @@ The following infrastructure is applied to `dev` maintained in the AWS personal 
 
 ![Infrastrcture](docs/architecture.jpg)
 
-# AWS Workflow Processing Platform - Terraform Infrastructure
-
-Terraform-based AWS architecture for a scalable workflow processing platform using API Gateway, Cognito, S3, SQS, ECS Fargate, VPC Lattice, Lambda, DynamoDB, ElastiCache, MongoDB/DocumentDB, ECR, CodePipeline, CodeBuild, CodeDeploy, X-Ray, Route 53, and Systems Manager Parameter Store.
-
 ## Overview
 
 This repository contains the Terraform implementation for a secure, scalable, and event-driven AWS platform. The architecture supports client-facing API requests, secure file uploads through pre-signed URLs, asynchronous workflow processing using ECS Fargate containers, private service-to-service communication through VPC Lattice, and supporting data stores for analytics, metadata, caching, and application state.
